@@ -82,37 +82,45 @@ function AdminHome() {
             </Row>
 
 
-            <Row justify='center' gutter={16} className=''>
-                {
-                   totalcar.length>0 &&  totalcar.map(car => {
-                        return <Col lg={5} sm={24} xsm={24}>
-                            <div className='car p-2 bs1'>
-                                <img src={car.image} className={'carimg'} />
-                                <div className='car-content d-flex align-items-center justify-content-between '>
-                                    <div>
-                                        <p>{car.name}</p>
-                                        <p>{car.rentperhour} Rent per hour/-</p>
-                                    </div>
-                                    <div className='mr-4'>
-                                        <Link to={`/editcar/${car._id}`} > <EditOutlined className='mr-3' style={{ cursor: 'pointer' }} /></Link>
-                                        <Popconfirm
-                                            title="Are you sure to delete this Car?"
-                                            onConfirm={()=>{dispatch(deletecar({carid:car._id}))}}
-                                            okText="Yes"
-                                            cancelText="No"
-                                        >
-                                            <DeleteOutlined style={{ color: 'red', cursor: 'pointer' }} />
-                                        </Popconfirm>
+            <Row justify="center" gutter={16}>
+        {totalcar.map((car) => {
+          return (
+            <Col lg={5} sm={24} xs={24}>
+              <div className="car p-2 bs1">
+                <img src={car.image} className="carimg" />
 
+                <div className="car-content d-flex align-items-center justify-content-between">
+                  <div className="text-left pl-2">
+                    <p>{car.name}</p>
+                    <p> Rent Per Hour {car.rentPerHour} /-</p>
+                  </div>
 
-                                    </div>
-                                </div>
-                            </div>
-                            <h3>{car.name}</h3>
-                        </Col>
-                    })
-                }
-            </Row>
+                  <div className="mr-4">
+                    <Link to={`/editcar/${car._id}`}>
+                      <EditOutlined
+                        className="mr-3"
+                        style={{ color: "green", cursor: "pointer" }}
+                      />
+                    </Link>
+
+                    <Popconfirm
+                      title="Are you sure to delete this car?"
+                      onConfirm={()=>{dispatch(deletecar({carid : car._id}))}}
+                      
+                      okText="Yes"
+                      cancelText="No"
+                    >
+                      <DeleteOutlined
+                        style={{ color: "red", cursor: "pointer" }}
+                      />
+                    </Popconfirm>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          );
+        })}
+      </Row>
 
 
 
