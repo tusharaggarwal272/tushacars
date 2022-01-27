@@ -9,7 +9,7 @@ export const getAllCars = () => async (dispatch) => {
         dispatch({ type: 'GET_ALL_CARS', payload: results.data })
         dispatch({ type: 'LOADING', payload: false });
     } catch (err) {
-        console.log(err);
+        // console.log(err);
 
         dispatch({ type: 'LOADING', payload: false });
     }
