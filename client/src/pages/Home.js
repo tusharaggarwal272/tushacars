@@ -74,7 +74,7 @@ function Home() {
 
             
           <Row justify='center' gutter={16} className=''>
-              {
+              {totalcar.length>0 &&
                   totalcar.map(car=>{
                       return <Col lg={5} sm={24} xsm={24}>
                           <div className='car p-2 bs1'>
